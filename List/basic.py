@@ -43,7 +43,7 @@ list.extend(list_d)
 #Deleting elements from the list - we can do delete elements using 3 methods - delete() - we can delete by using the index , it doesnt return the deleted value , pop()  - we can delete by using the index here - we can either remove the last element or any other element by giving the parameter, remove() - we can remove element by just providing the value
 
 lists = [1,3,4,5,6]
-lists.remove(1)
+#lists.remove(1)
 #print(lists)
 #print(lists.pop(3))
 #print(lists)
@@ -97,8 +97,8 @@ a = a * 3
 
 prev_list = [1,2,3]
 new_list = [i*3 for i in prev_list]
-print(prev_list)
-print(new_list)
+#print(prev_list)
+#print(new_list)
 
 
 
