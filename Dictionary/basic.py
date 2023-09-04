@@ -54,5 +54,7 @@ new_dict = {}.fromkeys([1,2,3],0)
 #8. update() - The update method updates the dictionary with the elements from another dictionary object or from an iterable of key value pairs.
 
 #Dictionary Operations/Builtin Methods
-
-
+#1. in and not in operator -  To check if keys are present in the dictionary.
+#2. all() - It checks the keys of the dictionary. If all the keys are True it returns true or else it returns False. (0 and False are false keys) - This works as AND Truth Table.
+#3. sorted() - This functions sort the keys in the dictionary and returns the dictionary.
+#4. any() -  It also checks the keys of the dictionary. If all the keys are True it returns true or else it returns False. (0 and False are false keys) - This works as OR Truth Table.
