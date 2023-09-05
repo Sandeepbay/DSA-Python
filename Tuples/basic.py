@@ -23,11 +23,11 @@ myTuple3 = tuple('abcdef')
 
 #print('a' in myTuple)
 #print(myTuple.index('c'))
-# def search(tuple , target):
-#     for i in range(len(tuple)):
-#         if tuple[i] == target:
-#             return f"The {target} is found in index {i}"
-#     return "Target has not been found"
+def search(tuple , target):
+    for i in range(len(tuple)):
+        if tuple[i] == target:
+            return f"The {target} is found in index {i}"
+    return "Target has not been found"
 # print(search(myTuple , 'd'))
 
 #Tuple builtin functions and methods
