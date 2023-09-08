@@ -78,12 +78,14 @@ class LinkedList:
         self.length += 1
         return True
     
+    #Writing a travserse method so that all nodes in the Linked List can Traverse
     def traverse(self):
         current = self.head
         while current is not None:
             print(current.value)
             current = current.next
 
+    #A Search Method to find the target inside the Linked List 
     def search(self , target):
         current = self.head
         index = 0
@@ -94,6 +96,7 @@ class LinkedList:
             index += 1
         return -1
 
+    #A Get Method to find the value of the node using the index
     def get(self,index):
         current = self.head
         if index < 0 or index >= self.length:
@@ -102,6 +105,7 @@ class LinkedList:
             current = current.next
         return current
     
+    #A Set Method used to change the value of the node using the index
     def set(self , index , value):
         temp = self.get(index)
         if temp:
@@ -109,6 +113,7 @@ class LinkedList:
             return True
         return False
     
+    #A Pop First Method used to remove the first node in the Linked List
     def PopFirst(self):
         if self.length == 0:
             return None
@@ -122,6 +127,7 @@ class LinkedList:
         self.length -= 1
         return popped_node
     
+    #A Pop Method used to remove the last node in the Linked List
     def pop(self):
         if self.length == 0:
             return None
@@ -137,6 +143,7 @@ class LinkedList:
         self.length -= 1
         return popped_node
     
+    #A Remove Method used to remove any node by giving the index 
     def remove(self , index):
         if index < 0 or index >= self.length:
             return None
@@ -151,10 +158,13 @@ class LinkedList:
         self.length -= 1
         return popped_node
     
+    #A Delete All Method to remove all the nodes present in the Linked List
     def delete_all(self):
         self.head = self.tail = None
         self.length = 0
-        
+
+    
+#All The Operations that are carried out    
 new_Linked_list = LinkedList()
 new_Linked_list.append(10)
 new_Linked_list.append(20)
