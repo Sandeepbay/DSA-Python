@@ -20,6 +20,7 @@ class CSLinkedList:
         self.tail = None
         self.length = 0
 
+    #A Method to display the Linked List
     def __str__(self):
         temp_node = self.head
         result = ''
@@ -31,7 +32,7 @@ class CSLinkedList:
             result = result + ' -> '
         return result
 
-
+    #Method to add element at the end of the Linked List 
     def append(self,value):
         new_node = Node(value)
         if self.length == 0:
@@ -44,6 +45,7 @@ class CSLinkedList:
             self.tail = new_node
         self.length += 1
 
+    #Method to add element at the beginning of the Linked List 
     def prepend(self,value):
         new_node = Node(value)
         if self.length == 0:
@@ -56,6 +58,7 @@ class CSLinkedList:
             self.head = new_node        
         self.length += 1
 
+    #Method to add element in the Linked List 
     def insert(self,index,value):
         new_node = Node(value)
         if index > self.length or index < 0:
@@ -80,6 +83,7 @@ class CSLinkedList:
             temp_node.next = new_node
         self.length += 1
 
+    #Method to traverse inside the Linked List 
     def traverse(self):
         if self.head == None:
             return None
@@ -89,7 +93,8 @@ class CSLinkedList:
             temp_node = temp_node.next
             if temp_node == self.head:
                 break
-
+    
+    #Method to serach an element inside the Linked List 
     def search(self,target):
         temp_node = self.head
         index = 0
@@ -101,6 +106,7 @@ class CSLinkedList:
                 break
             index = index + 1
 
+    #Method to get value using the index in Linked List 
     def get(self , index):
         if index > self.length or index < 0:
             return None
@@ -108,14 +114,16 @@ class CSLinkedList:
         for _ in range(index):
             temp_node = temp_node.next
         return temp_node
-    
+
+    #Method to get value using the index and then change it    
     def set(self , index , value):
         temp_node = self.get(index)
         if temp_node:
             temp_node.value = value
             return True
         return False
-    
+
+    #Method to delete element at the beginning of the Linked List    
     def popFirst(self):
         popped_node = self.head
         if self.length == 0:
@@ -131,6 +139,7 @@ class CSLinkedList:
             self.length -= 1
         return popped_node.value
     
+    #Method to delete element at the end of the Linked List 
     def pop(self):
         popped_node = self.tail
         if self.length == 0:
@@ -148,6 +157,7 @@ class CSLinkedList:
             self.length -= 1
         return popped_node.value
     
+    #Method delete element in the Linked List 
     def remove(self , index):
         prev_node = self.head
         popped_node = self.get(index)
@@ -165,7 +175,8 @@ class CSLinkedList:
                 popped_node.next = None
             self.length -= 1
         return popped_node.value
-    
+
+    #Method to delete all the nodes of the Linked List   
     def delete(self):
         if self.length == 0:
             return None
@@ -176,7 +187,7 @@ class CSLinkedList:
          
 
 
-
+#All the operations carried out
 cs_Linked_List = CSLinkedList()
 cs_Linked_List.append(10)
 cs_Linked_List.append(20)
