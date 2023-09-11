@@ -21,7 +21,7 @@ class DoubleLinkedList:
         node.prev = None
         self.head = node
         self.tail = node
-        print(node.value)
+        print(node)
         return "New Node has been created"
 
 new_Double_Linked_List = DoubleLinkedList()
