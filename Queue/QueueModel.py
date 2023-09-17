@@ -8,6 +8,6 @@ customQueue.put(5)
 customQueue.put(7)
 customQueue.put(9)
 print(customQueue.full())
-#Deleting element from thr Queue
+#Deleting element from the Queue
 print(customQueue.get())
 print(customQueue.qsize())
