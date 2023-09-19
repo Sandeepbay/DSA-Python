@@ -1,1 +1,0 @@
-# Use a single list to implement three stacks and perform stack operations 
