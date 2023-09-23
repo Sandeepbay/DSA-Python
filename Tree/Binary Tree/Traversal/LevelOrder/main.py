@@ -1,4 +1,4 @@
-import LinkedListQueue as queue
+import copy as queue
 
 class TreeNode:
     def __init__(self , data):
