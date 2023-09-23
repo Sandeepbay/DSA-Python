@@ -5,4 +5,3 @@ class TreeNode:
         self.right = None
 
 tree = TreeNode(5)
-print(tree)
