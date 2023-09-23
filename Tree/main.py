@@ -13,3 +13,33 @@
 #6. Depth of the node - a length of the path from root to the node
 #7. Height of the node - a length of the path from the node to the deepest node
 #8. Height of the tree - Height of root node
+#9. Depth of the tree - Depth of root node
+
+class TreeNode:
+    def __init__(self , data , children):
+        self.data = data
+        self.children = children
+    
+    def __str__(self , level=0):
+        ret = " " * level + str(self.data) + "\n"
+        for child in self.children:
+            ret += child.__str__(level+1)
+        return ret
+    
+    def addChild(self , TreeNode):
+        self.children.append(TreeNode)
+
+tree = TreeNode('Drinks' , [])
+cold = TreeNode('Cold' , [])
+hot = TreeNode('Hot' , [])
+tree.addChild(cold)
+tree.addChild(hot)
+cola = TreeNode('Cola' , [])
+maaza = TreeNode('Maaza' , [])
+tea = TreeNode('Tea' , [])
+coffee = TreeNode('Coffee' , [])
+hot.addChild(tea)
+hot.addChild(coffee)
+cold.addChild(maaza)
+cold.addChild(cola)
+print(tree)
