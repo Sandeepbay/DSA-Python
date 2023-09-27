@@ -61,6 +61,7 @@ def levelOrder(rootNode):
                 customQueue.enqueue(root.value.left)
             if root.value.right is not None:
                 customQueue.enqueue(root.value.right)
+#Checking
 
 #All Operations carried out
 newTree = binarySearchTree(None)
