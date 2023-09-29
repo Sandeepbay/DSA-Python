@@ -11,12 +11,12 @@ class binarySearchTree:
 def insertNode(rootNode , nodeValue):
     if rootNode.data == None:
         rootNode.data = nodeValue
-    elif nodeValue <= rootNode.data:
+    elif nodeValue < rootNode.data:
         if rootNode.left is None:
             rootNode.left = binarySearchTree(nodeValue)
         else:
             insertNode(rootNode.left , nodeValue)
-    elif nodeValue >= rootNode.data:
+    elif nodeValue > rootNode.data:
         if rootNode.right is None:
             rootNode.right = binarySearchTree(nodeValue)
         else:
@@ -61,7 +61,21 @@ def levelOrder(rootNode):
                 customQueue.enqueue(root.value.left)
             if root.value.right is not None:
                 customQueue.enqueue(root.value.right)
-#Checking
+
+# Searching a node in the binary Search Tree
+def search(rootNode , nodeValue):
+    if rootNode.data == nodeValue:
+        return "Element has been found"
+    elif nodeValue < rootNode.data:
+        if rootNode.left.data == nodeValue:
+            return "Element has been found"
+        else:
+            search(rootNode.left , nodeValue)
+    else:
+        if rootNode.right.data == nodeValue:
+            return "Element has been found"
+        else:
+            search(rootNode.right  , nodeValue)
 
 #All Operations carried out
 newTree = binarySearchTree(None)
@@ -82,3 +96,4 @@ insertNode(newTree , 93)
 # inOrder(newTree)
 # postOrder(newTree)
 #levelOrder(newTree)
+print(search(newTree , 40))
