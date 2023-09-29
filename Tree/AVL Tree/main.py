@@ -61,11 +61,113 @@ def search(rootNode , nodeValue):
         else:
             search(rootNode.right , nodeValue)
 
+#Helper Functions for inserting - 
+def getHeight(rootNode):
+    if not rootNode:
+        return 0
+    return rootNode.height
+
+def rotateRight(disbalancedNode):
+    newRoot = disbalancedNode.left
+    disbalancedNode.left = disbalancedNode.left.right
+    newRoot.right = disbalancedNode
+    disbalancedNode.height = 1 + max(getHeight(disbalancedNode.left) , getHeight(disbalancedNode.right))
+    newRoot.height = 1 + max(getHeight(newRoot.left) , getHeight(newRoot.right))
+    return newRoot
+
+def rotateLeft(disbalancedNode):
+    newRoot = disbalancedNode.right
+    disbalancedNode.right = disbalancedNode.right.left
+    newRoot.left = disbalancedNode
+    disbalancedNode.height = 1 + max(getHeight(disbalancedNode.left) , getHeight(disbalancedNode.right))
+    newRoot.height = 1 + max(getHeight(newRoot.left) , getHeight(newRoot.right))
+    return newRoot
+
+def getBalance(rootNode):
+    if not rootNode:
+        return 0
+    return getHeight(rootNode.left) - getHeight(rootNode.right)
+
+#Insertion Operation
+def insertNode(rootNode , nodeValue):
+    if not rootNode:
+        return AVLNode(nodeValue)
+    elif nodeValue < rootNode.data:
+        rootNode.left = insertNode(rootNode.left , nodeValue)
+    else:
+        rootNode.right = insertNode(rootNode.right , nodeValue)
+    rootNode.height = 1 + max(getHeight(rootNode.left) , getHeight(rootNode.right))
+    balance = getBalance(rootNode)
+    if balance > 1 and nodeValue < rootNode.left.data:
+        return rotateRight(rootNode)
+    if balance > 1 and nodeValue > rootNode.left.data:
+        rootNode.left = rotateLeft(rootNode.left)
+        return rotateRight(rootNode)
+    if balance < -1 and nodeValue > rootNode.right.data:
+        return rotateLeft(rootNode)
+    if balance < -1 and nodeValue < rootNode.right.data:
+        rootNode.right = rotateRight(rootNode.right)
+        return rotateLeft(rootNode)
+    return rootNode
+
+#Helper function for deleting - 
+def getMinValueNode(rootNode):
+    if rootNode is None or rootNode.left is None:
+        return rootNode
+    return getMinValueNode(rootNode.left)
+
+#Deleting Operation
+def deleteNode(rootNode , nodeValue):
+    if not rootNode:
+        return rootNode
+    elif nodeValue < rootNode.data:
+        rootNode.left = deleteNode(rootNode.left , nodeValue)
+    elif nodeValue > rootNode.data:
+        rootNode.right = deleteNode(rootNode.right , nodeValue)
+    else:
+        if rootNode.left is None:
+            temp = rootNode.right
+            rootNode = None
+            return temp
+        elif rootNode.right is None:
+            temp = rootNode.left
+            rootNode = None
+            return temp
+        temp = getMinValueNode(rootNode.right)
+        rootNode.data = temp.data
+        rootNode.right = deleteNode(rootNode.right , temp.data)
+    rootNode.height = 1 + max(getHeight(rootNode.left) , getHeight(rootNode.right))
+    balance = getBalance(rootNode)
+    if balance > 1 and getBalance(rootNode.left) >= 0:
+        return rotateRight(rootNode)
+    if balance < -1 and getBalance(rootNode.right) <= 0:
+        return rotateLeft(rootNode)
+    if balance > 1 and getBalance(rootNode.left) < 0:
+        rootNode.left = rotateLeft(rootNode.left)
+        return rotateRight(rootNode)
+    if balance < -1 and getBalance(rootNode.right) > 0:
+        rootNode.right = rotateRight(rootNode.right)
+        return rotateLeft(rootNode)
+    return rootNode
+
+# Deleting Entire AVL Tree
+
+def deleteAVL(rootNode):
+    rootNode.data = None
+    rootNode.left =  None
+    rootNode.right = None
+    return "AVL Tree has been deleted"
+    
 
 #All operations carried out
 newAVL = AVLNode(10)
-preOrder(newAVL)
-inOrder(newAVL)
-postOrder(newAVL)
+# preOrder(newAVL)
+# inOrder(newAVL)
+# postOrder(newAVL)
+# print(search(newAVL , 10))
+newAVL = insertNode(newAVL , 20)
+newAVL = insertNode(newAVL , 30)
+newAVL = insertNode(newAVL , 40)
+#newAVL = deleteNode(newAVL , 20)
+#print(deleteAVL(newAVL))
 levelOrder(newAVL)
-print(search(newAVL , 10))
