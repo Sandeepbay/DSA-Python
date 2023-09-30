@@ -56,7 +56,64 @@ def insertNode(rootNode , nodeValue , heapType):
     rootNode.heapSize += 1
     heapifyTreeInsert(rootNode , rootNode.heapSize , heapType)
     return "The value has been inserted"
-    
+
+#Helper function
+def heapifyTreeExtract(rootNode , index , heapType):
+    leftIndex = index * 2
+    rightIndex = index * 2 + 1
+    swapChild = 0
+    if rootNode.heapSize < leftIndex:
+        return
+    elif rootNode.heapSize == leftIndex:
+        if heapType == "Min":
+            if rootNode.customList[index] > rootNode.customList[leftIndex]:
+                temp =  rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[leftIndex]
+                rootNode.customList[leftIndex] = temp
+            return
+        else:
+            if rootNode.customList[index] < rootNode.customList[leftIndex]:
+                temp =  rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[leftIndex]
+                rootNode.customList[leftIndex] = temp
+            return
+    else:
+        if heapType == "Min":
+            if rootNode.customList[leftIndex] < rootNode.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+            if rootNode.customList[index] > rootNode.customList[swapChild]:
+                temp =  rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[swapChild]
+                rootNode.customList[swapChild] = temp
+        else:
+            if rootNode.customList[leftIndex] > rootNode.customList[rightIndex]:
+                swapChild = leftIndex
+            else:
+                swapChild = rightIndex
+            if rootNode.customList[index] < rootNode.customList[swapChild]:
+                temp =  rootNode.customList[index]
+                rootNode.customList[index] = rootNode.customList[swapChild]
+                rootNode.customList[swapChild] = temp
+        heapifyTreeExtract(rootNode , swapChild , heapType)
+
+
+# A Method to delete element in the Bianry Heap
+def extractNode(rootNode , heapType):
+    if rootNode.heapSize == 0:
+        return
+    else:
+        extractedNode = rootNode.customList[1]
+        rootNode.customList[1] = rootNode.customList[rootNode.heapSize]
+        rootNode.customList[rootNode.heapSize] = None
+        rootNode.heapSize -= 1
+        heapifyTreeExtract(rootNode , 1 , heapType)
+        return extractedNode
+
+# A Method to delete the Bianry Heap
+def deleteBinaryTree(rootNode):
+    rootNode.customList = None
 
 #All operations carried out  
 newHeapTree = Heap(5)
@@ -68,4 +125,6 @@ insertNode(newHeapTree , 5 , "Max")
 insertNode(newHeapTree , 3 , "Max")
 insertNode(newHeapTree , 2 , "Max")
 insertNode(newHeapTree , 1 , "Max")
+#print(extractNode(newHeapTree , "Max"))
+#fdeleteBinaryTree(newHeapTree)
 levelOrder(newHeapTree)
