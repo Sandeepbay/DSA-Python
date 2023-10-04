@@ -7,7 +7,7 @@ def binarySearch(array , value):
     while start <= end:
         middle = (start + end)//2
         if array[middle] == value:
-            return "Element has been found"
+            return array[middle]
         elif value <= array[middle]:
             end = middle - 1
         elif value >= array[middle]:
@@ -15,4 +15,9 @@ def binarySearch(array , value):
     return "Element has not been Found"
 
 print(binarySearch(customArray , 2))
+print(binarySearch(customArray , 6))
+print(binarySearch(customArray , 23))
+print(binarySearch(customArray , 12))
+print(binarySearch(customArray , 35))
+print(binarySearch(customArray , 45))
 print(binarySearch(customArray , 60))
