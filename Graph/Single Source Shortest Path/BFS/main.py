@@ -31,6 +31,5 @@ customDict = {
     "g" : ["f"],
     "e" : ["f"],
 }
-
 new_dict = Graph(customDict)
 print(new_dict.bfs("a" , "f"))
