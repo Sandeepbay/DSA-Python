@@ -1,5 +1,7 @@
 # Algorithm for Single Source Shortest Path - Dijkstra Algorithm
 
+# Note - Dijkstra's algorithm cannot find a solution when there is a negative cycle.
+
 import heapq
 
 class Edge:
