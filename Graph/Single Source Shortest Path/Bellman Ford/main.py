@@ -1,1 +1,0 @@
-# Bellman Ford Algorithm - It is used to find the Aingle Source shortest path problem. If there is a negative cycle it catches it and report its existence.
